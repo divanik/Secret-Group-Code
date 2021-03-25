@@ -5,11 +5,10 @@ module SubSegTree where
 data Node  = Empty | Leaf {size :: Integer} | Mid {free :: Integer, size :: Integer, lef :: Node, rig :: Node} deriving Show
 
 make :: Integer -> Node
-make s  	| s == 0  	= Empty
-			| otherwise = Leaf s
+make s  	= Leaf s
 
 size0 :: Node -> Integer
-size0 Empty = 0
+size0 Empty = 1
 size0 all = size all
 
 free0 :: Node -> Integer
