@@ -1,7 +1,5 @@
 module SubSegTree where
 
-{-import Data-}
-
 data Node  = Empty | Leaf {size :: Integer} | Mid {free :: Integer, size :: Integer, lef :: Node, rig :: Node} deriving Show
 
 make :: Integer -> Node

@@ -13,8 +13,8 @@ data Permut =   Permut  {size    :: Integer,
 make :: Integer -> Permut
 make s = Permut s (SubSegTree.make s) (SubSegTree.make s) empty empty
 
-ind_perm :: RandomGen g => g -> Integer -> Permut -> (Permut, Maybe Integer, g)
-ind_perm g a all@(Permut size direct reversed dirmap revmap) = 
+ind_perm :: RandomGen g => Permut -> Integer -> g -> (Permut, Maybe Integer, g)
+ind_perm all@(Permut size direct reversed dirmap revmap) a g = 
     if (a < 0) || (a >= size) then
         (all, Nothing, g)
     else
@@ -31,8 +31,8 @@ ind_perm g a all@(Permut size direct reversed dirmap revmap) =
             ((Permut size dir2 rev2 dirmap2 revmap2), (Just b), g1)
 
 
-rev_perm :: RandomGen g => g -> Integer -> Permut -> (Permut, Maybe Integer, g)
-rev_perm g a all@(Permut size direct reversed dirmap revmap) = 
+rev_perm :: RandomGen g => Permut -> Integer -> g -> (Permut, Maybe Integer, g)
+rev_perm all@(Permut size direct reversed dirmap revmap) a g = 
     if (a < 0) || (a >= size) then
         (all, Nothing, g)
     else
