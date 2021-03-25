@@ -32,3 +32,8 @@ generative :: RandomGen g => CyclicGroup g -> (CyclicGroup g, Integer)
 generative (CyclicGroup sz perm g) = 
     let (perm2, Just c1, g1) = rev_perm perm 1 g in 
         ((CyclicGroup sz perm2 g1), c1)
+
+neutral :: RandomGen g => CyclicGroup g -> (CyclicGroup g, Integer) 
+neutral (CyclicGroup sz perm g) = 
+    let (perm2, Just c1, g1) = rev_perm perm 0 g in 
+        ((CyclicGroup sz perm2 g1), c1)
